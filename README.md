@@ -1,73 +1,144 @@
-# StudyMate AI
+# StudyMate AI 📚
 
-An AI-powered student utility web application built with Java, Spring Boot, HTML, CSS, JavaScript and the OpenAI Responses API.
+**An AI-powered study assistant built using Java, Spring Boot, Ollama, and Llama 3.2.**
 
-## Features
-1. Notes Summarizer
-2. Quiz Generator
-3. Concept Explainer
-4. Answer Improver
-5. Flashcard Generator
-6. AI Study Assistant
+StudyMate AI helps students understand concepts, prepare for exams, improve answers, and organize study materials using locally running AI.
 
-## Requirements
-- Java 25 or later (latest LTS)
-- Maven 3.6.3 or later
-- OpenAI API key with API access and available usage/billing
+## 🚀 Features
 
-## Run on Windows (PowerShell)
-1. Open this folder in VS Code or IntelliJ IDEA.
-2. Create an API key from the OpenAI platform dashboard. Do not share it or commit it to Git.
-3. In PowerShell, set the key for this terminal session:
+1. **Notes Summarizer** – Converts lengthy study notes into concise summaries.
+2. **Quiz Generator** – Generates practice questions from study material.
+3. **Concept Explainer** – Explains difficult topics in simple language.
+4. **Answer Improver** – Improves the clarity and quality of written answers.
+5. **Flashcard Generator** – Creates flashcards for quick revision.
+6. **AI Study Assistant** – Answers study-related questions.
 
-   ```powershell
-   $env:OPENAI_API_KEY="your_actual_api_key"
-   ```
+## 🛠️ Technologies Used
 
-4. Optional: set a model available to your API project:
+| Technology | Purpose |
+|---|---|
+| Java 21 | Backend programming |
+| Spring Boot | Backend framework |
+| Ollama | Local AI model runtime |
+| Llama 3.2 (3B) | AI language model |
+| HTML | Frontend structure |
+| CSS | Frontend styling |
+| JavaScript | Frontend functionality |
+| Maven | Dependency management |
 
-   ```powershell
-   $env:OPENAI_MODEL="gpt-6-astra"
-   ```
+## ⚙️ Requirements
 
-5. Start the app:
+- Java JDK 21
+- Apache Maven 3.10.1
+- Ollama
+- Llama 3.2 (3B)
 
-   ```powershell
-   mvn spring-boot:run
-   ```
+## 📥 Installation and Setup
 
-6. Open http://localhost:8080 in your browser. Keep the terminal open while using the app.
+### 1. Clone the Repository
 
-## API
-POST `/api/ai/{feature}`
-
-Supported features: `summarizer`, `quiz`, `explainer`, `improver`, `flashcards`, `assistant`.
-
-Request:
-```json
-{"text":"Paste study notes or a question here"}
+```bash
+git clone https://github.com/pranjaltripathi27/StudyMate-AI.git
 ```
 
-Success response:
-```json
-{"result":"AI-generated response"}
+### 2. Open the Project
+
+```bash
+cd StudyMate-AI
 ```
 
-## Security
-The API key is read by the Java backend from an environment variable. It is never sent to browser JavaScript. Never put your key in HTML, JavaScript, GitHub, or screenshots. API usage may incur charges according to your account's pricing and limits.
+### 3. Download the AI Model
 
-## Structure
+Install Ollama and run:
+
+```bash
+ollama pull llama3.2:3b
+```
+
+### 4. Start Ollama
+
+Make sure Ollama is running on your computer.
+
+### 5. Build the Project
+
+```bash
+mvn clean package -DskipTests
+```
+
+### 6. Run the Application
+
+```bash
+mvn spring-boot:run
+```
+
+### 7. Open in Browser
+
+Visit:
+
 ```text
-src/main/java/com/studymate/
-  StudyMateApplication.java
-  config/HttpClientConfig.java
-  controller/AiController.java
-  controller/ApiExceptionHandler.java
-  dto/AiRequest.java
-  service/AiService.java
-src/main/resources/
-  application.properties
-  static/index.html
-  static/styles.css
-  static/app.js
+http://localhost:8080
 ```
+
+## 🏗️ Project Architecture
+
+```text
+              STUDYMATE AI
+                   |
+             Frontend UI
+          (HTML, CSS, JavaScript)
+                   |
+             Spring Boot
+               Backend
+                   |
+               Ollama
+                   |
+             Llama 3.2 (3B)
+                   |
+             AI Response
+                   |
+             Frontend UI
+```
+
+## 📂 Project Structure
+
+```text
+StudyMate-AI/
+│
+├── src/
+│   └── main/
+│       ├── java/com/studymate/
+│       │   ├── config/
+│       │   ├── controller/
+│       │   ├── dto/
+│       │   ├── service/
+│       │   └── StudyMateApplication.java
+│       │
+│       └── resources/
+│           ├── static/
+│           │   ├── index.html
+│           │   ├── styles.css
+│           │   └── app.js
+│           └── application.properties
+│
+├── pom.xml
+├── .gitignore
+└── README.md
+```
+
+## 🔒 AI Model and Privacy
+
+StudyMate AI uses Ollama to run the Llama 3.2 model locally. It does not require an OpenAI API key for its current configuration.
+
+## 🎯 Project Objective
+
+The main objective of StudyMate AI is to make learning easier and more efficient by providing students with AI-powered tools for summarization, practice, revision, and concept clarification.
+
+## 👨‍💻 Author
+
+**Pranjal Mani Tripathi**
+
+GitHub: [@pranjaltripathi27](https://github.com/pranjaltripathi27)
+
+---
+
+**StudyMate AI – Making Learning Smarter with AI.**
