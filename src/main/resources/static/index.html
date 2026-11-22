@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyMate AI | Your study companion</title><link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-mark">S</div><div><strong>StudyMate AI</strong><small>YOUR AI STUDY COMPANION</small></div></div>
+    <div class="nav-label">STUDY TOOLS</div>
+    <button class="nav-item active" data-feature="summarizer"><span>▤</span> Notes Summarizer</button>
+    <button class="nav-item" data-feature="quiz"><span>☷</span> Quiz Generator</button>
+    <button class="nav-item" data-feature="explainer"><span>✧</span> Concept Explainer</button>
+    <button class="nav-item" data-feature="improver"><span>✎</span> Answer Improver</button>
+    <button class="nav-item" data-feature="flashcards"><span>▣</span> Flashcard Generator</button>
+    <button class="nav-item" data-feature="assistant"><span>◉</span> AI Study Assistant</button>
+    <div class="sidebar-bottom"><div class="tip-card"><strong>Study smarter</strong><p>Turn your notes into a better learning experience with AI.</p></div><small>STUDYMATE AI · JAVA PROJECT</small></div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div class="mobile-brand">StudyMate AI</div><span class="status"><i></i> AI assistant ready</span></header>
+    <section class="welcome"><div class="eyebrow">YOUR PERSONAL LEARNING SPACE</div><h1 id="page-title">Notes Summarizer</h1><p id="page-description">Turn lengthy study material into clear, structured notes.</p></section>
+    <section class="workspace">
+      <div class="input-card">
+        <div class="card-heading"><div><span class="step">01</span><strong>Your study material</strong></div><span class="muted">Paste text below</span></div>
+        <label for="user-input">NOTES OR QUESTION</label>
+        <textarea id="user-input" placeholder="Paste your notes, topic, question, or draft answer here..."></textarea>
+        <div class="input-footer"><span id="char-count">0 characters</span><button id="clear-btn" class="text-button">Clear text</button></div>
+        <button id="generate-btn" class="primary-button"><span>✧</span> Generate with AI <span class="arrow">→</span></button>
+        <p class="privacy-note">Your request is sent to the configured AI service for processing.</p>
+      </div>
+      <div class="output-card">
+        <div class="card-heading"><div><span class="step">02</span><strong>AI-generated result</strong></div><button id="copy-btn" class="copy-button" disabled>Copy result</button></div>
+        <div id="output" class="output-area"><div class="empty-state"><div class="empty-icon">✧</div><h3>Your result will appear here</h3><p>Choose a study tool, enter your material, and select Generate with AI.</p></div></div>
+      </div>
+    </section>
+    <footer>StudyMate AI <span>·</span> Built with Java, Spring Boot and OpenAI</footer>
+  </main>
+</div>
+<script src="/app.js"></script>
+</body></html>
