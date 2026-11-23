@@ -142,3 +142,6 @@ GitHub: [@pranjaltripathi27](https://github.com/pranjaltripathi27)
 ---
 
 **StudyMate AI – Making Learning Smarter with AI.**
+## 🖥️ Application Screenshot
+
+![StudyMate AI Dashboard](screenshots/dashboard.png)
