@@ -12,6 +12,7 @@ StudyMate AI helps students understand concepts, prepare for exams, improve answ
 4. **Answer Improver** – Improves the clarity and quality of written answers.
 5. **Flashcard Generator** – Creates flashcards for quick revision.
 6. **AI Study Assistant** – Answers study-related questions.
+7. **StudyMate RAG** – Upload PDF or TXT documents and ask questions based on their content using Retrieval-Augmented Generation (RAG).
 
 ## 🛠️ Technologies Used
 
@@ -20,6 +21,8 @@ StudyMate AI helps students understand concepts, prepare for exams, improve answ
 | Java 21 | Backend programming |
 | Spring Boot | Backend framework |
 | Ollama | Local AI model runtime |
+| PDFBox | PDF text extraction |
+| RAG | Document-based question answering |
 | Llama 3.2 (3B) | AI language model |
 | HTML | Frontend structure |
 | CSS | Frontend styling |
@@ -53,6 +56,7 @@ Install Ollama and run:
 
 ```bash
 ollama pull llama3.2:3b
+ollama pull nomic-embed-text
 ```
 
 ### 4. Start Ollama
@@ -82,21 +86,30 @@ http://localhost:8080
 ## 🏗️ Project Architecture
 
 ```text
-              STUDYMATE AI
-                   |
-             Frontend UI
-          (HTML, CSS, JavaScript)
-                   |
-             Spring Boot
-               Backend
-                   |
-               Ollama
-                   |
-             Llama 3.2 (3B)
-                   |
-             AI Response
-                   |
-             Frontend UI
+                                 STUDYMATE AI
+                         |
+          +--------------+--------------+
+          |                             |
+      Frontend UI                  Backend
+   (HTML, CSS, JavaScript)       (Spring Boot)
+          |                             |
+          |                 +-----------+-----------+
+          |                 |                       |
+          |             AI Service              RAG Service
+          |                 |                       |
+          |              Ollama              Document Processing
+          |                 |                 (PDFBox / TXT)
+          |             Llama 3.2                   |
+          |                 |                  Text Chunking
+          |             AI Response                  |
+          |                                    Embeddings
+          |                                  (nomic-embed-text)
+          |                                         |
+          +--------------------------------- Vector Store
+                                                    |
+                                             Relevant Context
+                                                    |
+                                              AI Response
 ```
 
 ## 📂 Project Structure
@@ -106,19 +119,36 @@ StudyMate-AI/
 │
 ├── src/
 │   └── main/
-│       ├── java/com/studymate/
-│       │   ├── config/
-│       │   ├── controller/
-│       │   ├── dto/
-│       │   ├── service/
-│       │   └── StudyMateApplication.java
+│       ├── java/
+│       │   └── com/
+│       │       └── studymate/
+│       │           ├── config/
+│       │           │
+│       │           ├── controller/
+│       │           │   └── DocumentController.java
+│       │           │
+│       │           ├── dto/
+│       │           │
+│       │           ├── service/
+│       │           │   ├── AiService.java
+│       │           │   ├── DocumentService.java
+│       │           │   ├── EmbeddingService.java
+│       │           │   ├── RagService.java
+│       │           │   ├── TextChunker.java
+│       │           │   └── VectorStore.java
+│       │           │
+│       │           └── StudyMateApplication.java
 │       │
 │       └── resources/
 │           ├── static/
 │           │   ├── index.html
 │           │   ├── styles.css
 │           │   └── app.js
+│           │
 │           └── application.properties
+│
+├── screenshots/
+│   └── dashboard.png
 │
 ├── pom.xml
 ├── .gitignore

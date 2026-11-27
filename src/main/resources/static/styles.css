@@ -11,3 +11,16 @@ label{display:block;font-size:10px;font-weight:800;letter-spacing:1px;color:#858
 .copy-button{border:1px solid var(--line);border-radius:7px;padding:7px 10px;color:#77788b}.copy-button:disabled{opacity:.4;cursor:not-allowed}.output-area{min-height:390px;max-height:600px;overflow:auto;border:1px solid #efeff4;background:#fdfdff;border-radius:10px;padding:17px;font-size:13px;line-height:1.8;white-space:pre-wrap;overflow-wrap:anywhere}.empty-state{text-align:center;padding:92px 15px;color:#9999aa;white-space:normal}.empty-icon{width:42px;height:42px;margin:0 auto 15px;border-radius:13px;background:#f0edff;color:#6b59dc;display:grid;place-items:center;font-size:22px}.empty-state h3{font-size:13px;color:#55566e;margin:0 0 7px}.empty-state p{font-size:11px;max-width:230px;margin:auto;line-height:1.6}footer{text-align:center;color:#a4a4b2;font-size:10px;padding:28px}footer span{padding:0 5px}
 @media(max-width:900px){.sidebar{width:225px}.main{padding:0 3% 20px}.workspace{grid-template-columns:1fr}.input-card,.output-card{min-height:auto}.output-area{min-height:260px}.welcome{padding-top:32px}}
 @media(max-width:600px){.sidebar{width:65px;padding:17px 8px}.brand{padding:0 4px 30px}.brand>div:last-child,.nav-label,.nav-item:not(.active){display:none}.nav-item{font-size:0;justify-content:center;padding:12px 5px}.nav-item span{font-size:19px}.tip-card,.sidebar-bottom>small{display:none}.main{padding:0 15px 15px}.topbar{height:58px}.mobile-brand{display:block;margin-right:auto;font-weight:800;font-size:14px}.status{font-size:10px}.welcome{padding:30px 0 22px}h1{font-size:26px}.welcome p{font-size:12px}.input-card,.output-card{padding:16px}.card-heading{margin-bottom:20px}textarea{height:210px}}
+
+/* Keep generated answers readable, including after an earlier error message. */
+.output-area {
+  color: var(--ink) !important;
+}
+
+.output-area p,
+.output-area li,
+.output-area h1,
+.output-area h2,
+.output-area h3 {
+  color: var(--ink) !important;
+}

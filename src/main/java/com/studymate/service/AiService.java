@@ -124,4 +124,51 @@ public class AiService {
             + "\n\nStudent input:\n"
             + text;
     }
+
+public String generateRagAnswer(String prompt) {
+
+    try {
+        JsonNode response = webClient.post()
+                .uri(ollamaUrl + "/api/chat")
+                .bodyValue(Map.of(
+                        "model", model,
+                        "messages", List.of(
+                                Map.of(
+                                        "role", "user",
+                                        "content", prompt
+                                )
+                        ),
+                        "stream", false
+                ))
+                .retrieve()
+                .bodyToMono(JsonNode.class)
+                .block(Duration.ofSeconds(180));
+
+        if (response == null) {
+            throw new IllegalStateException(
+                    "Ollama returned an empty response."
+            );
+        }
+
+        String output = response.path("message")
+                .path("content")
+                .asText("");
+
+        if (output.isBlank()) {
+            throw new IllegalStateException(
+                    "AI returned an empty answer."
+            );
+        }
+
+        return output.trim();
+
+    } catch (Exception ex) {
+        throw new IllegalStateException(
+                "RAG answer generation failed: "
+                        + ex.getMessage(), ex
+        );
+    }
+
+
+    }
 }
